@@ -3,7 +3,6 @@
 #include <fstream>
 #include <string>
 
-//get the size of "matrix"
 size_t getSizeOfMatrix();
 
 // get the path or name of the output file
