@@ -70,7 +70,7 @@ void fillMatrix(std::ofstream& of, size_t sizeOfMatrix) {
 			num = i + j;
 			of << num << ' ';
 		}
-		//don't put \n on the end of the matrix
+		//don't put \n on the end of the matrix if end of file is reached
 		if (i + 1 < sizeOfMatrix)
 			of << std::endl;
 	}
