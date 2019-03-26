@@ -31,4 +31,6 @@ int main() {
 	system("pause");
 	std::cout << "Alexander Danilchenko!" << std::endl;
 	return 0;
-}
+} 
+
+//root folder D:/Studying/Programming/LABS/Labka_2.2_Second_Sem/Labka_2.2_Second_Sem/7.txt
