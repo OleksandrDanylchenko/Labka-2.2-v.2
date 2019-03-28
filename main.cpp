@@ -19,7 +19,7 @@ int main() {
 	dynamicMatrix matrix;
 	try {
 		matrix = input();
-		matrix.processing(); // rotate the central rhombus for 180 deg
+		matrix.rotate180Deg();
 		output(matrix);
 		matrix.~dynamicMatrix();
 	}
@@ -29,6 +29,5 @@ int main() {
 		return -1;
 	}
 	system("pause");
-	std::cout << "Alexander Danilchenko!" << std::endl;
 	return 0;
-}
+} 
