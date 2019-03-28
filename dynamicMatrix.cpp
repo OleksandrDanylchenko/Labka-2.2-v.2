@@ -69,62 +69,12 @@ size_t dynamicMatrix::getWidth() const { return _width; }
 
 size_t dynamicMatrix::getHeight() const { return _height; }
 
-void dynamicMatrix::processing() {
-	if (_width & 1 && _height & 1)
-		rotate180DegODD();
-	else
-		rotate180DegEVEN();
-}
-
-void dynamicMatrix::rotate180DegODD() {
-	size_t centralElement = _width / 2;
-	//horizontal mirroring
-	for (size_t i = 1; i < centralElement; ++i) {
-		//swapping the central column
-		std::swap(elem(i, centralElement), elem(_width - 1 - i, centralElement));
-		if (i > 1)
-			for (size_t k = 1; k < i; ++k) {
-				std::swap(elem(i, centralElement + k), elem(_width - 1 - i, centralElement + k));
-				std::swap(elem(i, centralElement - k), elem(_width - 1 - i, centralElement - k));
-			}
-	}
-	//vertical mirroring
-	for (size_t j = 1; j < centralElement; ++j) {
-		//swapping the central row
-		std::swap(elem(centralElement, j), elem(centralElement, _width - 1 - j));
-		if (j > 1)
-			for (size_t k = 1; k < j; ++k) {
-				std::swap(elem(centralElement + k, j), elem(centralElement + k, _width - 1 - j));
-				std::swap(elem(centralElement - k, j), elem(centralElement - k, _width - 1 - j));
-			}
-	}
-}
-
-void dynamicMatrix::rotate180DegEVEN() {
-	size_t centralElement1 = _width / 2 - 1;
-	size_t centralElement2 = centralElement1 + 1;
-	//horizontal mirroring
-	for (size_t i = 1; i <= centralElement1; ++i) {
-		//swapping the central columns
-		std::swap(elem(i, centralElement1), elem(_width - 1 - i, centralElement1));
-		std::swap(elem(i, centralElement2), elem(_width - 1 - i, centralElement2));
-		if (i > 1)
-			for (size_t k = 1; k <= i; ++k) {
-				std::swap(elem(i, centralElement1 - k), elem(_width - 1 - i, centralElement1 - k));
-				std::swap(elem(i, centralElement2 + k), elem(_width - 1 - i, centralElement2 + k));
-			}
-	}
-	//vertical mirroring
-	for (size_t j = 1; j <= centralElement1; ++j) {
-		//swapping the central rows
-		std::swap(elem(centralElement1, j), elem(centralElement1, _width - 1 - j));
-		std::swap(elem(centralElement2, j), elem(centralElement2, _width - 1 - j));
-		if (j > 1)
-			for (size_t k = 1; k <= j; ++k) {
-				std::swap(elem(centralElement1 - k, j), elem(centralElement1 - k, _width - 1 - j));
-				std::swap(elem(centralElement2 + k, j), elem(centralElement2 + k, _width - 1 - j));
-			}
-	}
+void dynamicMatrix::rotate180Deg() {
+	for (int i = 1; i < _width / 2; ++i)
+		for (int j = _width / 2 + _width % 2 - 1; j > _width / 2 + _width % 2 - i - 1; --j) {
+			std::swap(elem(i, j), elem(_width - i - 1, _width - j - 1));
+			std::swap(elem(j, _width - i - 1), elem(_width - j - 1, i));
+		}
 }
 
 dynamicMatrix input() {
@@ -149,7 +99,7 @@ dynamicMatrix input() {
 	inputFile >> tempWidth >> tempHeight;
 	if (tempWidth != tempHeight)
 		throw std::logic_error("\nMatrix is not square!");
-	else if (tempWidth > 500)
+	else if (tempWidth < 0 || tempWidth > 500)
 		throw std::logic_error("<<<" + inputFilePath + ": INPUT ERROR>>>");
 	inputFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 	//skip the first line until delimiter
 	size_t expectedAmountOfElements = tempWidth * tempHeight;
