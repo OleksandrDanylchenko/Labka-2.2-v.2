@@ -8,15 +8,13 @@ public:
 	~dynamicMatrix();
 
 	int& elem(const size_t& y, const size_t& x);
-	void processing(); // looks if the matrix is odd or even and calls other specified methods
+	void rotate180Deg();
 	size_t getWidth() const;
 	size_t getHeight() const;
 private:
 	size_t _width;
 	size_t _height;
 	int** _dynMatrix;
-	void rotate180DegODD();
-	void rotate180DegEVEN();
 };
 
 dynamicMatrix input();
