@@ -138,7 +138,7 @@ void output(dynamicMatrix & m) {
 			break;
 	}
 
-	//writes to the output file the new representation of matrix
+	//writes to the output file new representation of matrix
 	outputFile << std::setw(4) << m.getWidth() << ' ' << m.getHeight() << std::endl;
 	for (size_t i = 0; i < m.getWidth(); ++i) {
 		for (size_t j = 0; j < m.getHeight(); ++j)
