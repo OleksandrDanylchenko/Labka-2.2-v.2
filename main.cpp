@@ -1,7 +1,6 @@
 //ALEXANDER DANILCHENKO 13.03.19 LABKA 2.2 v.2
 #include <iostream>
 #include <Windows.h>
-#include <fstream>
 #include <string>
 #include <iomanip>
 #include "dynamicMatrix.h"
