@@ -125,7 +125,7 @@ void output(dynamicMatrix & m) {
 	while (true) {
 		std::cout << "\nEnter the path to the output file: ";
 		getline(std::cin, outputFilePath);
-		if (outputFilePath.find('\\') == std::string::npos and outputFilePath.find('\/') == std::string::npos) { //if user didn't provided full adress -> create a new file in the root folder
+		if (outputFilePath.find('\\') == std::string::npos and outputFilePath.find('/') == std::string::npos) { //if user didn't provided full adress -> create a new file in the root folder
 			outputFilePath += ".txt";
 			std::cout << "\nYour file will be stored at: D:" << '\\' << "Studying" << '\\'
 				<< "Programming" << '\\' << "LABS" << '\\' << "Labka_2.2_Second_Sem" << '\\'
